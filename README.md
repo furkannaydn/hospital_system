@@ -1,6 +1,6 @@
 # Hastane Yönetim Sistemi
 
-![Proje Logosu](https://placehold.co/800x200/3498db/ffffff?text=Hastane+Y%C3%B6netim+Sistemi&font=roboto)
+!Proje Logosu
 
 Bu proje, Flask ve SQLAlchemy kullanılarak geliştirilmiş, modern ve kullanıcı dostu bir hastane randevu ve yönetim sistemidir. Sistem; hasta, doktor ve sekreter olmak üzere üç farklı kullanıcı rolünü destekler ve her rol için özelleştirilmiş paneller sunar.
 
@@ -8,16 +8,16 @@ Bu proje, Flask ve SQLAlchemy kullanılarak geliştirilmiş, modern ve kullanıc
 
 ## 📖 İçindekiler
 
-- [🚀 Proje Hakkında](#-proje-hakkında)
-- [✨ Temel Özellikler](#-temel-özellikler)
-  - [Hasta Rolü](#hasta-rolü)
-  - [Doktor Rolü](#doktor-rolü)
-  - [Sekreter Rolü](#sekreter-rolü)
-- [📸 Ekran Görüntüleri](#-ekran-görüntüleri)
-- [🛠️ Kullanılan Teknolojiler](#️-kullanılan-teknolojiler)
-- [⚙️ Kurulum ve Başlatma](#️-kurulum-ve-başlatma)
-- [🔑 Varsayılan Kullanıcı Bilgileri](#-varsayılan-kullanıcı-bilgileri)
-- [📂 Proje Yapısı](#-proje-yapısı)
+- 🚀 Proje Hakkında
+- ✨ Temel Özellikler
+  - Hasta Rolü
+  - Doktor Rolü
+  - Sekreter Rolü
+- 📸 Ekran Görüntüleri
+- 🛠️ Kullanılan Teknolojiler
+- ⚙️ Kurulum ve Başlatma
+- 🔑 Varsayılan Kullanıcı Bilgileri
+- 📂 Proje Yapısı
 
 ---
 
@@ -58,52 +58,45 @@ Hastane Yönetim Sistemi, randevu alma süreçlerini dijitalleştirerek hem hast
 
 ## 📸 Ekran Görüntüleri
 
-*Projenizin çalışan halinden ekran görüntülerini bu bölüme ekleyebilirsiniz.*
 Aşağıda sistemin temel sayfalarından bazı ekran görüntüleri yer almaktadır.
 
-| Giriş Sayfası | Hasta Paneli |
-| Hasta Giriş & Kayıt | Randevu Alma |
+#### Hasta Ekranları
+| Hasta Girişi | Yeni Kayıt |
 | :---: | :---: |
+| !Hasta Girişi | !Yeni Kayıt |
+| **Randevu Alma** | **Randevu Detayı** |
+| !Randevu Alma | !Randevu Detayı |
 
-| ![Hasta Giriş](hastane_projesi/assets/hastagiriş.png) | ![Randevu Alma](hastane_projesi/assets/randevual.png) |
-
-| Randevu Alma Ekranı | Sekreter Paneli |
-| Randevu Detayı | Doktor Paneli |
+#### Doktor Ekranları
+| Doktor Girişi | Doktor Paneli |
 | :---: | :---: |
-| ![Randevu Alma Ekranı](https://placehold.co/400x300/ecf0f1/34495e?text=Randevu+Alma) | ![Sekreter Paneli](https://placehold.co/400x300/ecf0f1/34495e?text=Sekreter+Paneli) |
-| ![Randevu Detayı](hastane_projesi/assets/randevu.png) | ![Doktor Paneli](hastane_projesi/assets/doktorpanel.png) |
+| !Doktor Girişi | !Doktor Paneli |
 
-| Sekreter Paneli | Sekreter Randevu Yönetimi |
+#### Sekreter Ekranları
+| Sekreter Girişi | Sekreter Paneli |
 | :---: | :---: |
-| ![Sekreter Paneli](hastane_projesi/assets/sekreterpanel.png) | ![Sekreter Randevu Yönetimi](hastane_projesi/assets/sekreterrandevu.png) |
-
-| Sekreter Branş Yönetimi | Sekreter Doktor Ekleme |
-| :---: | :---: |
-| ![Sekreter Branş Yönetimi](hastane_projesi/assets/sekreterbranş.png) | ![Sekreter Doktor Ekleme](hastane_projesi/assets/sekreterdoktor.png) |
-
-| Diğer Giriş Ekranları |
-| :---: |
-| ![Doktor Giriş](hastane_projesi/assets/doktorgiriş.png) |
-| ![Sekreter Giriş](hastane_projesi/assets/sekretergiriş.png) |
-| ![Yeni Kayıt](hastane_projesi/assets/kayıtol.png) |
-
+| !Sekreter Girişi | !Sekreter Paneli |
+| **Randevu Yönetimi** | **Doktor Ekleme** |
+| !Randevu Yönetimi | !Doktor Ekleme |
+| **Branş Yönetimi** |
+| !Branş Yönetimi |
 
 ---
 
 ## 🛠️ Kullanılan Teknolojiler
 
 - **Backend:**
-  - ![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)
-  - ![Flask](https://img.shields.io/badge/Flask-2.x-black?logo=flask)
-  - ![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-1.4%2B-orange?logo=sqlalchemy)
-  - ![Werkzeug](https://img.shields.io/badge/Werkzeug-2.x-gray) (Şifreleme için)
+  - !Python
+  - !Flask
+  - !SQLAlchemy
+  - !Werkzeug (Şifreleme için)
 - **Veritabanı:**
-  - ![SQLite](https://img.shields.io/badge/SQLite-3-blue?logo=sqlite)
+  - !SQLite
 - **Frontend:**
-  - ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-  - ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
-  - ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
-  - ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.x-purple?logo=bootstrap)
+  - !HTML5
+  - !CSS3
+  - !JavaScript
+  - !Bootstrap
 
 ---
 
@@ -113,8 +106,8 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin.
 
 1.  **Projeyi Klonlayın:**
     ```bash
-    git clone https://github.com/kullanici-adiniz/proje-repo-adiniz.git
-    cd hastane_projesi
+    git clone https://github.com/furkannaydn/hospital_system.git
+    cd hospital_system
     ```
 
 2.  **Sanal Ortam Oluşturun ve Aktif Edin (Önerilir):**
@@ -136,6 +129,7 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin.
 
 4.  **Uygulamayı Başlatın:**
     ```bash
+    cd hastane_projesi
     python app.py
     ```
 
@@ -167,15 +161,15 @@ Sistemi test etmek için aşağıdaki varsayılan hesapları kullanabilirsiniz:
 ## 📂 Proje Yapısı
 
 ```
-hastane_projesi/
-├── static/
-│   └── style.css         # Genel CSS stilleri
-├── templates/            # HTML şablonları
-│   ├── hasta_paneli.html
-│   ├── doktor_paneli.html
-│   ├── sekreter_paneli.html
-│   └── ... (diğer tüm .html dosyaları)
-├── app.py                # Ana Flask uygulaması, veritabanı modelleri ve route'lar
-├── hastane.db            # SQLite veritabanı dosyası (ilk çalıştırmada oluşur)
-└── README.md             # Bu dosya
+hospital_system/
+├── hastane_projesi/
+│   ├── assets/               # Ekran görüntüleri
+│   ├── static/
+│   │   └── style.css         # Genel CSS stilleri
+│   ├── templates/            # HTML şablonları
+│   │   └── ... (tüm .html dosyaları)
+│   ├── app.py                # Ana Flask uygulaması
+│   └── hastane.db            # SQLite veritabanı dosyası
+├── README.md                 # Bu dosya
+└── LICENSE                   # Lisans dosyası (varsa)
 ```
