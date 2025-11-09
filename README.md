@@ -58,15 +58,30 @@ Hastane Yönetim Sistemi, randevu alma süreçlerini dijitalleştirerek hem hast
 
 ## 📸 Ekran Görüntüleri
 
-*Projenizin çalışan halinden ekran görüntülerini bu bölüme ekleyebilirsiniz.*
+Aşağıda sistemin temel sayfalarından bazı ekran görüntüleri yer almaktadır.
 
-| Giriş Sayfası | Hasta Paneli |
+| Hasta Giriş & Kayıt | Randevu Alma |
 | :---: | :---: |
-| ![Giriş Sayfası](https://placehold.co/400x300/ecf0f1/34495e?text=Giriş+Ekranı) | ![Hasta Paneli](https://placehold.co/400x300/ecf0f1/34495e?text=Hasta+Paneli) |
+| ![Hasta Giriş](hastane_projesi/assets/hastagiriş.png) | ![Randevu Alma](hastane_projesi/assets/randevual.png) |
 
-| Randevu Alma Ekranı | Sekreter Paneli |
+| Randevu Detayı | Doktor Paneli |
 | :---: | :---: |
-| ![Randevu Alma Ekranı](https://placehold.co/400x300/ecf0f1/34495e?text=Randevu+Alma) | ![Sekreter Paneli](https://placehold.co/400x300/ecf0f1/34495e?text=Sekreter+Paneli) |
+| ![Randevu Detayı](hastane_projesi/assets/randevu.png) | ![Doktor Paneli](hastane_projesi/assets/doktorpanel.png) |
+
+| Sekreter Paneli | Sekreter Randevu Yönetimi |
+| :---: | :---: |
+| ![Sekreter Paneli](hastane_projesi/assets/sekreterpanel.png) | ![Sekreter Randevu Yönetimi](hastane_projesi/assets/sekreterrandevu.png) |
+
+| Sekreter Branş Yönetimi | Sekreter Doktor Ekleme |
+| :---: | :---: |
+| ![Sekreter Branş Yönetimi](hastane_projesi/assets/sekreterbranş.png) | ![Sekreter Doktor Ekleme](hastane_projesi/assets/sekreterdoktor.png) |
+
+| Diğer Giriş Ekranları |
+| :---: |
+| ![Doktor Giriş](hastane_projesi/assets/doktorgiriş.png) |
+| ![Sekreter Giriş](hastane_projesi/assets/sekretergiriş.png) |
+| ![Yeni Kayıt](hastane_projesi/assets/kayıtol.png) |
+
 
 ---
 
