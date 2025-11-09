@@ -1,6 +1,6 @@
 # Hastane Yönetim Sistemi
 
-!Proje Logosu
+![Proje Logosu](https://placehold.co/800x200/3498db/ffffff?text=Hastane+Y%C3%B6netim+Sistemi&font=roboto)
 
 Bu proje, Flask ve SQLAlchemy kullanılarak geliştirilmiş, modern ve kullanıcı dostu bir hastane randevu ve yönetim sistemidir. Sistem; hasta, doktor ve sekreter olmak üzere üç farklı kullanıcı rolünü destekler ve her rol için özelleştirilmiş paneller sunar.
 
@@ -63,40 +63,40 @@ Aşağıda sistemin temel sayfalarından bazı ekran görüntüleri yer almaktad
 #### Hasta Ekranları
 | Hasta Girişi | Yeni Kayıt |
 | :---: | :---: |
-| !Hasta Girişi | !Yeni Kayıt |
+| ![Hasta Girişi](hastane_projesi/assets/hastagiriş.png) | ![Yeni Kayıt](hastane_projesi/assets/kayıtol.png) |
 | **Randevu Alma** | **Randevu Detayı** |
-| !Randevu Alma | !Randevu Detayı |
+| ![Randevu Alma](hastane_projesi/assets/randevual.png) | ![Randevu Detayı](hastane_projesi/assets/randevu.png) |
 
 #### Doktor Ekranları
 | Doktor Girişi | Doktor Paneli |
 | :---: | :---: |
-| !Doktor Girişi | !Doktor Paneli |
+| ![Doktor Girişi](hastane_projesi/assets/doktorgiriş.png) | ![Doktor Paneli](hastane_projesi/assets/doktorpanel.png) |
 
 #### Sekreter Ekranları
 | Sekreter Girişi | Sekreter Paneli |
 | :---: | :---: |
-| !Sekreter Girişi | !Sekreter Paneli |
+| ![Sekreter Girişi](hastane_projesi/assets/sekretergiriş.png) | ![Sekreter Paneli](hastane_projesi/assets/sekreterpanel.png) |
 | **Randevu Yönetimi** | **Doktor Ekleme** |
-| !Randevu Yönetimi | !Doktor Ekleme |
+| ![Randevu Yönetimi](hastane_projesi/assets/sekreterrandevu.png) | ![Doktor Ekleme](hastane_projesi/assets/sekreterdoktor.png) |
 | **Branş Yönetimi** |
-| !Branş Yönetimi |
+| ![Branş Yönetimi](hastane_projesi/assets/sekreterbranş.png) |
 
 ---
 
 ## 🛠️ Kullanılan Teknolojiler
 
 - **Backend:**
-  - !Python
-  - !Flask
-  - !SQLAlchemy
-  - !Werkzeug (Şifreleme için)
+  - ![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)
+  - ![Flask](https://img.shields.io/badge/Flask-2.x-black?logo=flask)
+  - ![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-1.4%2B-orange?logo=sqlalchemy)
+  - ![Werkzeug](https://img.shields.io/badge/Werkzeug-2.x-gray) (Şifreleme için)
 - **Veritabanı:**
-  - !SQLite
+  - ![SQLite](https://img.shields.io/badge/SQLite-3-blue?logo=sqlite)
 - **Frontend:**
-  - !HTML5
-  - !CSS3
-  - !JavaScript
-  - !Bootstrap
+  - ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+  - ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+  - ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+  - ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.x-purple?logo=bootstrap&logoColor=white)
 
 ---
 
