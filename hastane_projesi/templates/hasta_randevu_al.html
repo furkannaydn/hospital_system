@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-7">
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white text-center">
+                <h3>Randevu Al</h3>
+            </div>
+            <div class="card-body p-4">
+                <form action="{{ url_for('hasta_randevu_al') }}" method="POST">
+                    <div class="mb-3">
+                        <label for="doktor_id" class="form-label">Doktor Seçin</label>
+                        <select class="form-select" id="doktor_id" name="doktor_id" required>
+                            <option value="">-- Doktor Seçiniz --</option>
+                            {% for doktor in doktorlar %}
+                                <option value="{{ doktor.id }}">{{ doktor.ad }} {{ doktor.soyad }} ({{ doktor.brans_ad }})</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tarih" class="form-label">Randevu Tarihi</label>
+                        <input type="date" class="form-control" id="tarih" name="tarih" required min="{{ datetime.now().strftime('%Y-%m-%d') }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="saat" class="form-label">Randevu Saati</label>
+                        <input type="time" class="form-control" id="saat" name="saat" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="sikayet" class="form-label">Şikayetiniz (İsteğe Bağlı)</label>
+                        <textarea class="form-control" id="sikayet" name="sikayet" rows="3" placeholder="Doktora iletmek istediğiniz şikayetlerinizi buraya yazabilirsiniz."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Randevu Oluştur</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

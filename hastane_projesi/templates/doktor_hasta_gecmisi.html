@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-2">Tıbbi Geçmiş</h1>
+    <h4 class="text-primary mb-4">Hasta: {{ hasta.ad }} {{ hasta.soyad }}</h4>
+
+    {% if randevular %}
+        {% for randevu in randevular %}
+        <div class="card shadow-sm mb-3">
+            <div class="card-header d-flex justify-content-between">
+                <strong>Tarih: {{ randevu.tarih.strftime('%d-%m-%Y %H:%M') }}</strong>
+                <span>Durum: <span class="badge 
+                    {% if randevu.durum == 'Tamamlandı' %}bg-secondary
+                    {% elif randevu.durum == 'İptal Edildi' %}bg-danger
+                    {% else %}bg-info
+                    {% endif %}">{{ randevu.durum }}</span></span>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Doktor:</strong> Dr. {{ randevu.doktor.ad }} {{ randevu.doktor.soyad }}</p>
+                        <p><strong>Branş:</strong> {{ randevu.doktor.brans.ad }}</p>
+                        <p><strong>Hastanın Şikayeti:</strong></p>
+                        <p class="text-muted">{{ randevu.sikayet or 'Belirtilmemiş' }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Doktor Notu:</strong></p>
+                        <div class="p-3 bg-light rounded border">
+                            <p class="mb-0">{{ randevu.doktor_notu or 'Not eklenmemiş.' }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-info">Bu hastanın geçmiş randevu kaydı bulunmamaktadır.</div>
+    {% endif %}
+
+    <a href="{{ url_for('doktor_paneli') }}" class="btn btn-secondary mt-3">Panele Geri Dön</a>
+</div>
+{% endblock %}

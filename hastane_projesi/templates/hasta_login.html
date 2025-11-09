@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="card shadow-lg border-0">
+    <div class="card-body p-0">
+        <div class="split-screen-container">
+            <!-- Sol Taraf - Resim -->
+            <div class="col-lg-6 d-none d-lg-block split-screen-image" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070');">
+            </div>
+
+            <!-- Sağ Taraf - Form -->
+            <div class="col-lg-6 col-12 d-flex align-items-center justify-content-center">
+                <div class="p-4 p-sm-5 w-100" style="max-width: 450px;">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-user-injured fa-3x text-primary mb-3"></i>
+                        <h3 class="fw-bold">Hasta Girişi</h3>
+                        <p class="text-muted">Sağlık bilgilerinize ulaşmak için giriş yapın.</p>
+                    </div>
+                    <form action="{{ url_for('hasta_login') }}" method="POST">
+                        <div class="mb-3 form-icon-wrapper"><i class="fas fa-envelope form-icon"></i><input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="E-posta Adresi" required></div>
+                        <div class="mb-4 form-icon-wrapper"><i class="fas fa-lock form-icon"></i><input type="password" class="form-control form-control-lg" id="sifre" name="sifre" placeholder="Şifre" required></div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100">Giriş Yap</button>
+                    </form>
+                    <div class="text-center mt-4">
+                        <small>Hesabınız yok mu? <a href="{{ url_for('kayit_ol') }}" class="fw-bold">Hemen Kayıt Olun</a></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

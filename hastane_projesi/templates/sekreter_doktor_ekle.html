@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow-lg">
+            <div class="card-header text-white text-center">
+                <h3>Yeni Doktor Ekle</h3>
+            </div>
+            <div class="card-body p-4">
+                <form action="{{ url_for('sekreter_doktor_ekle') }}" method="POST">
+                    <div class="mb-3">
+                        <label for="ad" class="form-label">Ad</label>
+                        <input type="text" class="form-control" id="ad" name="ad" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="soyad" class="form-label">Soyad</label>
+                        <input type="text" class="form-control" id="soyad" name="soyad" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-posta Adresi</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="sifre" class="form-label">Şifre</label>
+                        <input type="password" class="form-control" id="sifre" name="sifre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="brans_id" class="form-label">Branş Seçin</label>
+                        <select class="form-select" id="brans_id" name="brans_id" required>
+                            <option value="">-- Branş Seçiniz --</option>
+                            {% for brans in branslar %}
+                                <option value="{{ brans.id }}">{{ brans.ad }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Doktor Ekle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

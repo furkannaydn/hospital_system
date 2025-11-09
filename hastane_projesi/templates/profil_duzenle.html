@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h1 class="mb-4">Profil Yönetimi</h1>
+
+        <!-- Profil Bilgileri Güncelleme -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-primary text-white">
+                Kişisel Bilgiler
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-posta Adresi (Değiştirilemez)</label>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ kullanici.email }}" readonly>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="ad" class="form-label">Ad</label>
+                            <input type="text" class="form-control" id="ad" name="ad" value="{{ kullanici.ad }}" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="soyad" class="form-label">Soyad</label>
+                            <input type="text" class="form-control" id="soyad" name="soyad" value="{{ kullanici.soyad }}" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Bilgileri Güncelle</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Şifre Değiştirme -->
+        <div class="card shadow-sm">
+            <div class="card-header bg-danger text-white">
+                Şifre Değiştir
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <!-- Ad ve Soyad bilgilerini tekrar göndererek tek formda birleştirelim -->
+                    <input type="hidden" name="ad" value="{{ kullanici.ad }}">
+                    <input type="hidden" name="soyad" value="{{ kullanici.soyad }}">
+
+                    <div class="mb-3">
+                        <label for="mevcut_sifre" class="form-label">Mevcut Şifreniz</label>
+                        <input type="password" class="form-control" id="mevcut_sifre" name="mevcut_sifre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="yeni_sifre" class="form-label">Yeni Şifre</label>
+                        <input type="password" class="form-control" id="yeni_sifre" name="yeni_sifre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="yeni_sifre_tekrar" class="form-label">Yeni Şifre (Tekrar)</label>
+                        <input type="password" class="form-control" id="yeni_sifre_tekrar" name="yeni_sifre_tekrar" required>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Şifreyi Değiştir</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

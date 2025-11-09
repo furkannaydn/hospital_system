@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Randevu Al - Adım 1: Poliklinik Seçimi</h1>
+    <p class="lead">Lütfen randevu almak istediğiniz polikliniği seçiniz.</p>
+
+    <div class="list-group">
+        {% if branslar %}
+            {% for brans in branslar %}
+                <a href="{{ url_for('hasta_randevu_doktor_sec', brans_id=brans.id) }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    {{ brans.ad }}
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-warning">Sistemde kayıtlı poliklinik bulunmamaktadır.</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

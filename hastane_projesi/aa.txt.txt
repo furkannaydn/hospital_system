@@ -1,0 +1,18 @@
+
+
+E-posta: sekreter@hastane.com
+Şifre: sekreter123
+
+
+
+
+Ortak Şifre: doktor123
+
+
+mehmet.demir@hastane.com (Genel Cerrahi)
+zeynep.kaya@hastane.com (Kardiyoloji)
+ali.vural@hastane.com (Pediatri)
+fatma.celik@hastane.com (Dahiliye)
+...ve app.py dosyasında tanımlanan diğer doktorlar.
+Nasıl Giriş Yapılır?
+

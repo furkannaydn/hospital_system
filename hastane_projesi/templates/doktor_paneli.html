@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1 class="mb-4 mt-5">Doktor Paneli</h1>
+    <p>Hoş geldiniz, Dr. {{ session['user_ad'] }}!</p>
+
+    <h2 class="mt-5">Yaklaşan Randevularım</h2>
+    {% if randevular %}
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Hasta</th>
+                        <th>Tarih</th>
+                        <th>Saat</th>
+                        <th>Şikayet</th>
+                        <th>Durum</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for randevu in randevular %}
+                    <tr>
+                        <td>
+                            <a href="{{ url_for('doktor_hasta_gecmisi', hasta_id=randevu.hasta.id) }}" title="{{ randevu.hasta.ad }} {{ randevu.hasta.soyad }} adlı hastanın geçmişini gör">{{ randevu.hasta.ad }} {{ randevu.hasta.soyad }}</a>
+                        </td>
+                        <td>{{ randevu.tarih.strftime('%d-%m-%Y') }}</td>
+                        <td>{{ randevu.tarih.strftime('%H:%M') }}</td>
+                        <td>{{ randevu.sikayet if randevu.sikayet else 'Yok' }}</td>
+                        <td>
+                            {% if randevu.durum == 'Tamamlandı' %}
+                                <span class="badge bg-secondary">{{ randevu.durum }}</span>
+                            {% elif randevu.durum == 'İptal Edildi' %}
+                                <span class="badge bg-danger">{{ randevu.durum }}</span>
+                            {% else %}
+                                <span class="badge bg-info">{{ randevu.durum }}</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <div class="d-flex gap-1">
+                                {% if randevu.durum != 'Tamamlandı' and randevu.durum != 'İptal Edildi' %}
+                                <form action="{{ url_for('doktor_randevu_tamamla', randevu_id=randevu.id) }}" method="POST" class="d-inline">
+                                    <button type="submit" class="btn btn-success btn-sm" title="Tamamlandı olarak işaretle"><i class="fas fa-check"></i></button>
+                                </form>
+                                {% endif %}
+                                <a href="{{ url_for('doktor_randevu_not_ekle', randevu_id=randevu.id) }}" class="btn btn-primary btn-sm" title="Not Ekle/Düzenle"><i class="fas fa-notes-medical"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">Yaklaşan randevunuz bulunmamaktadır.</div>
+    {% endif %}
+
+    <h2 class="mt-5">Hastane Duyuruları</h2>
+    {% if duyurular %}
+        <div class="list-group">
+            {% for duyuru in duyurular %}
+                <div class="list-group-item list-group-item-action flex-column align-items-start mb-3 shadow-sm">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ duyuru.baslik }}</h5>
+                        <small class="text-muted">{{ duyuru.olusturma_tarihi.strftime('%d-%m-%Y %H:%M') }}</small>
+                    </div>
+                    <p class="mb-1">{{ duyuru.icerik }}</p>
+                    <small class="text-muted">Oluşturan: {{ duyuru.olusturan.ad }} {{ duyuru.olusturan.soyad }}</small>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">Henüz bir duyuru bulunmamaktadır.</div>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-7">
+        <div class="card shadow-lg">
+            <div class="card-header bg-success text-white text-center">
+                <h3>Yeni Randevu Oluştur</h3>
+            </div>
+            <div class="card-body p-4">
+                <form action="{{ url_for('sekreter_randevu_olustur') }}" method="POST">
+                    <div class="mb-3">
+                        <label for="hasta_id" class="form-label">Hasta Seçin</label>
+                        <select class="form-select" id="hasta_id" name="hasta_id" required>
+                            <option value="">-- Hasta Seçiniz --</option>
+                            {% for hasta in hastalar %}
+                                <option value="{{ hasta.id }}">{{ hasta.ad }} {{ hasta.soyad }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="doktor_id" class="form-label">Doktor Seçin</label>
+                        <select class="form-select" id="doktor_id" name="doktor_id" required>
+                            <option value="">-- Doktor Seçiniz --</option>
+                            {% for doktor in doktorlar %}
+                                <option value="{{ doktor.id }}">{{ doktor.ad }} {{ doktor.soyad }} ({{ doktor.brans_ad }})</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="tarih" class="form-label">Randevu Tarihi</label>
+                            <input type="date" class="form-control" id="tarih" name="tarih" required min="{{ datetime.now().strftime('%Y-%m-%d') }}">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="saat" class="form-label">Randevu Saati</label>
+                            <input type="time" class="form-control" id="saat" name="saat" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="sikayet" class="form-label">Şikayet (İsteğe Bağlı)</label>
+                        <textarea class="form-control" id="sikayet" name="sikayet" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="durum" class="form-label">Randevu Durumu</label>
+                        <select class="form-select" id="durum" name="durum" required>
+                            <option value="Bekleniyor" selected>Bekleniyor</option>
+                            <option value="Tamamlandı">Tamamlandı</option>
+                            <option value="İptal Edildi">İptal Edildi</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Randevu Oluştur</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

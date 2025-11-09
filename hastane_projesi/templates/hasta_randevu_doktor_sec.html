@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Randevu Al - Adım 2: Doktor ve Zaman Seçimi</h1>
+    <h4 class="text-primary mb-4">Poliklinik: {{ brans.ad }}</h4>
+
+    <form action="{{ url_for('hasta_randevu_doktor_sec', brans_id=brans.id) }}" method="POST" id="randevuForm">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header">
+                        1. Doktor ve Tarih Seçin
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="doktor_id" class="form-label">Doktor</label>
+                            <select class="form-select" id="doktor_id" name="doktor_id" required>
+                                <option value="">-- Doktor Seçiniz --</option>
+                                {% for doktor in doktorlar %}
+                                    <option value="{{ doktor.id }}">{{ doktor.ad }} {{ doktor.soyad }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tarih" class="form-label">Tarih</label>
+                            <input type="date" class="form-control" id="tarih" name="tarih" required min="{{ datetime.now().strftime('%Y-%m-%d') }}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        3. Şikayet (İsteğe Bağlı) ve Onay
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="sikayet" class="form-label">Şikayetiniz</label>
+                            <textarea class="form-control" id="sikayet" name="sikayet" rows="4" placeholder="Doktora iletmek istediğiniz ön bilgileri buraya yazabilirsiniz."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100" id="randevuOnaylaBtn" disabled>Randevuyu Onayla</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        2. Müsait Saatler
+                    </div>
+                    <div class="card-body">
+                        <div id="saatler-container" class="d-flex flex-wrap gap-2">
+                            <p class="text-muted">Lütfen doktor ve tarih seçimi yapınız.</p>
+                        </div>
+                        <div id="kontenjan-uyari" class="alert alert-danger mt-3 d-none"></div>
+                        <input type="hidden" id="saat" name="saat">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const doktorSelect = document.getElementById('doktor_id');
+    const tarihInput = document.getElementById('tarih');
+    const saatlerContainer = document.getElementById('saatler-container');
+    const kontenjanUyari = document.getElementById('kontenjan-uyari');
+    const gizliSaatInput = document.getElementById('saat');
+    const onayBtn = document.getElementById('randevuOnaylaBtn');
+
+    async function fetchAvailableSlots() {
+        const doktorId = doktorSelect.value;
+        const tarih = tarihInput.value;
+
+        if (!doktorId || !tarih) {
+            saatlerContainer.innerHTML = '<p class="text-muted">Lütfen doktor ve tarih seçimi yapınız.</p>';
+            kontenjanUyari.classList.add('d-none');
+            return;
+        }
+
+        saatlerContainer.innerHTML = '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Yükleniyor...</span></div>';
+        kontenjanUyari.classList.add('d-none');
+
+        try {
+            const response = await fetch(`/api/available_slots/${doktorId}/${tarih}`);
+            const data = await response.json();
+
+            saatlerContainer.innerHTML = '';
+
+            if (data.kontenjan_dolu) {
+                kontenjanUyari.textContent = `Seçtiğiniz doktorun ${tarih} tarihi için kontenjanı dolmuştur.`;
+                kontenjanUyari.classList.remove('d-none');
+            } else if (data.slots && data.slots.length > 0) {
+                data.slots.forEach(slot => {
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.className = 'btn btn-outline-primary btn-sm';
+                    button.textContent = slot;
+                    button.dataset.saat = slot;
+                    button.addEventListener('click', function() {
+                        // Önceki seçimi temizle
+                        document.querySelectorAll('#saatler-container .btn-primary').forEach(btn => {
+                            btn.classList.remove('btn-primary');
+                            btn.classList.add('btn-outline-primary');
+                        });
+                        // Yeni seçimi yap
+                        this.classList.remove('btn-outline-primary');
+                        this.classList.add('btn-primary');
+                        gizliSaatInput.value = this.dataset.saat;
+                        onayBtn.disabled = false; // Saat seçilince butonu aktif et
+                    });
+                    saatlerContainer.appendChild(button);
+                });
+            } else {
+                saatlerContainer.innerHTML = '<p class="text-muted">Seçtiğiniz tarih için uygun randevu saati bulunmamaktadır.</p>';
+            }
+        } catch (error) {
+            console.error('Hata:', error);
+            saatlerContainer.innerHTML = '<p class="text-danger">Saatler yüklenirken bir hata oluştu.</p>';
+        }
+    }
+
+    doktorSelect.addEventListener('change', fetchAvailableSlots);
+    tarihInput.addEventListener('change', fetchAvailableSlots);
+});
+</script>
+{% endblock %}

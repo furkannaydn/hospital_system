@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1 class="mb-4">Branş Yönetimi</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-info text-white">
+                <h5>Yeni Branş Ekle</h5>
+            </div>
+            <div class="card-body">
+                <form action="{{ url_for('sekreter_brans_yonetimi') }}" method="POST">
+                    <div class="mb-3">
+                        <label for="brans_adi" class="form-label">Branş Adı</label>
+                        <input type="text" class="form-control" id="brans_adi" name="brans_adi" required>
+                    </div>
+                    <button type="submit" class="btn btn-info">Branş Ekle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-header bg-secondary text-white">
+                <h5>Mevcut Branşlar</h5>
+            </div>
+            <div class="card-body">
+                {% if branslar %}
+                    <ul class="list-group">
+                        {% for brans in branslar %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                {{ brans.ad }}
+                                {# Branş düzenleme/silme butonları buraya eklenebilir #}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <div class="alert alert-warning" role="alert">Henüz bir branş eklenmemiş.</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

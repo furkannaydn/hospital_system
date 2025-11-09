@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white">
+                <h3>Randevu Notu Ekle/Düzenle</h3>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Hasta: {{ randevu.hasta.ad }} {{ randevu.hasta.soyad }}</h5>
+                <p class="card-text">Tarih: {{ randevu.tarih.strftime('%d-%m-%Y %H:%M') }}</p>
+                <hr>
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="doktor_notu" class="form-label">Doktor Notu (Reçete, Teşhis, vb.)</label>
+                        <textarea class="form-control" id="doktor_notu" name="doktor_notu" rows="8">{{ randevu.doktor_notu or '' }}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">Notu Kaydet</button>
+                    <a href="{{ url_for('doktor_paneli') }}" class="btn btn-secondary">Geri Dön</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

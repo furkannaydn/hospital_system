@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-7">
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white text-center">
+                <h3>Randevu Düzenle</h3>
+            </div>
+            <div class="card-body p-4">
+                <form action="{{ url_for('sekreter_randevu_duzenle', randevu_id=randevu.id) }}" method="POST">
+                    <div class="mb-3">
+                        <label for="hasta_id" class="form-label">Hasta</label>
+                        <select class="form-select" id="hasta_id" name="hasta_id" required>
+                            {% for hasta in hastalar %}
+                                <option value="{{ hasta.id }}" {% if hasta.id == randevu.hasta_id %}selected{% endif %}>{{ hasta.ad }} {{ hasta.soyad }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="doktor_id" class="form-label">Doktor</label>
+                        <select class="form-select" id="doktor_id" name="doktor_id" required>
+                            {% for doktor in doktorlar %}
+                                <option value="{{ doktor.id }}" {% if doktor.id == randevu.doktor_id %}selected{% endif %}>{{ doktor.ad }} {{ doktor.soyad }} ({{ doktor.brans_ad }})</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="tarih" class="form-label">Randevu Tarihi</label>
+                            <input type="date" class="form-control" id="tarih" name="tarih" value="{{ randevu.tarih.strftime('%Y-%m-%d') }}" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="saat" class="form-label">Randevu Saati</label>
+                            <input type="time" class="form-control" id="saat" name="saat" value="{{ randevu.tarih.strftime('%H:%M') }}" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="sikayet" class="form-label">Şikayet (İsteğe Bağlı)</label>
+                        <textarea class="form-control" id="sikayet" name="sikayet" rows="3">{{ randevu.sikayet or '' }}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="durum" class="form-label">Randevu Durumu</label>
+                        <select class="form-select" id="durum" name="durum" required>
+                            <option value="Bekleniyor" {% if randevu.durum == 'Bekleniyor' %}selected{% endif %}>Bekleniyor</option>
+                            <option value="Tamamlandı" {% if randevu.durum == 'Tamamlandı' %}selected{% endif %}>Tamamlandı</option>
+                            <option value="İptal Edildi" {% if randevu.durum == 'İptal Edildi' %}selected{% endif %}>İptal Edildi</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Değişiklikleri Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

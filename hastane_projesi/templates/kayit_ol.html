@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="card shadow-lg border-0">
+    <div class="card-body p-0">
+        <div class="split-screen-container">
+            <!-- Sol Taraf - Resim -->
+            <div class="col-lg-6 d-none d-lg-block split-screen-image" style="background-image: url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=2073');">
+            </div>
+
+            <!-- Sağ Taraf - Form -->
+            <div class="col-lg-6 col-12 d-flex align-items-center justify-content-center">
+                <div class="p-4 p-sm-5 w-100" style="max-width: 450px;">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-user-plus fa-3x text-success mb-3"></i>
+                        <h3 class="fw-bold">Yeni Hasta Kaydı</h3>
+                        <p class="text-muted">Sisteme dahil olmak için bilgilerinizi girin.</p>
+                    </div>
+                    <form action="{{ url_for('kayit_ol') }}" method="POST">
+                        <div class="mb-3 form-icon-wrapper"><i class="fas fa-user form-icon"></i><input type="text" class="form-control form-control-lg" id="ad" name="ad" placeholder="Adınız" required></div>
+                        <div class="mb-3 form-icon-wrapper"><i class="fas fa-user form-icon"></i><input type="text" class="form-control form-control-lg" id="soyad" name="soyad" placeholder="Soyadınız" required></div>
+                        <div class="mb-3 form-icon-wrapper"><i class="fas fa-envelope form-icon"></i><input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="E-posta Adresiniz" required></div>
+                        <div class="mb-4 form-icon-wrapper"><i class="fas fa-lock form-icon"></i><input type="password" class="form-control form-control-lg" id="sifre" name="sifre" placeholder="Şifreniz" required></div>
+                        <button type="submit" class="btn btn-success btn-lg w-100">Kayıt Ol</button>
+                    </form>
+                    <div class="text-center mt-4">
+                        <small>Zaten bir hesabınız var mı? <a href="{{ url_for('hasta_login') }}" class="fw-bold">Giriş Yapın</a></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
